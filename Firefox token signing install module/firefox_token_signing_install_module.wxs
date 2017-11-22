@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include "ff_config.wxi"?>
+  <Module Id="firefox_token_signing_mass_install_module" Language="1033" Version="$(var.VERSION)">
+    <Package Id="ED432C72-1213-45E0-9F3F-4DAF841FF923" Keywords="Installer" Platform="$(var.Platform)" InstallerVersion="405" Manufacturer="NORTAL"/>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id='ProgramFilesFolder'>
+        <Directory Id="APPLICATIONFOLDER" Name="Firefox Token Signing Plugin Mass">
+          <Component Id="Application" Guid="9D8DB411-FC7B-4FC2-975A-BEEB0F218552" Win64="no">
+            <AppId Description="Firefox plugin for Estonian ID Card Mass signing" Id="6C482A89-DDC0-479F-9226-D528342312E1"/>
+            <File Source="C:\OpenSSL-Win32\bin\libeay32.dll"/>
+            <File Source="$(var.ExtSolutionDir)Release\npesteid-firefox-plugin.dll"/>
+            <RegistryValue Root='HKLM' Type='string' Value='[APPLICATIONFOLDER]npesteid-firefox-plugin.dll'
+              Key='Software\MozillaPlugins\@NORTAL/esteid-firefox-plugin-mass' Name="Path" Action="write"/>
+          </Component>
+        </Directory>
+      </Directory>
+
+      <!-- 64bit -->
+      <?if $(var.Platform) = "x64" ?>
+      <Directory Id='ProgramFiles64Folder'>
+        <Directory Id="APPLICATION64FOLDER" Name="Firefox Token Signing Plugin Mass">
+          <Component Id="Application64" Guid="C3773B13-1E17-4BD8-9FE4-DC6367B0D51C" Win64="yes">
+            <File Source="C:\OpenSSL-Win64\bin\libeay32.dll" Id="libeay32_x64.dll"/>
+            <File Source="$(var.ExtSolutionDir)x64\Release\npesteid-firefox-plugin.dll" Id="npesteid_firefox_plugin64.dll" KeyPath="yes" Name="npesteid-firefox-plugin64.dll"/>
+            <RegistryValue Root="HKLM" Key="Software\MozillaPlugins\@NORTAL/esteid-firefox-plugin-mass" Name="Path"
+                         Value="[APPLICATION64FOLDER]npesteid-firefox-plugin64.dll" Type="string" Action="write"/>
+          </Component>
+        </Directory>
+      </Directory>
+      <?endif ?>
+    </Directory>
+  </Module>
+</Wix>

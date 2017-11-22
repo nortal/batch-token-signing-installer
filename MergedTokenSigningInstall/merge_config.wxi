@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?define ch_module = '..\Chrome token signing install module\bin\Release\Chrome_token_signing_install_module.msm' ?>
+  <?define ff_module = '..\Firefox token signing install module\bin\Release\Firefox_token_signing_install_module.msm' ?>
+  <?define ie_module = '..\IE token signing install module\bin\Release\IE_token_signing_install_module.msm' ?>
+</Include>

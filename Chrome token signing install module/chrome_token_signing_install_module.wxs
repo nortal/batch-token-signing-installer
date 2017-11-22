@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include "ch_config.wxi"?>
+	<Module Id="Chrome_token_signing_install_module" Language="1033" Version="$(var.VERSION)">
+		<Package Id="A195F6AC-4B48-4FBD-83BE-1AD4E08987C2" Keywords="Installer" Platform="$(var.Platform)" InstallerVersion="405" Manufacturer="NORTAL" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id='ProgramFilesFolder'>
+        <Directory Id="APPLICATIONFOLDER" Name="Chrome Token Signing Mass">
+          <Component Id="Application" Guid="DF8279AE-AFA9-4D1C-8C6E-B8E09B1DD2EB">
+            <File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.CRT\msvcp120.dll"/>
+            <File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.CRT\msvcr120.dll"/>
+            <File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.CRT\vccorlib120.dll"/>
+            <File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.MFC\mfc120u.dll"/>
+            <File Source="$(var.ExtSolutionDir)host-windows/Release/chrome-token-signing-mass.exe"/>
+            <File Source="$(var.ExtSolutionDir)host-windows/ee.nortal.sign_mass.json"/>
+            <RegistryValue Root="HKLM" Type="string" Value="[APPLICATIONFOLDER]ee.nortal.sign_mass.json"
+                Key="SOFTWARE\Google\Chrome\NativeMessagingHosts\ee.nortal.sign_mass"/>
+            <RegistryValue Root="HKLM" Type="string" Name="update_url"
+                Key="SOFTWARE\Google\Chrome\Extensions\fhflklnpgjhdjcnlnlnoeomfebmbjkkk"
+                Value="https://clients2.google.com/service/update2/crx" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+	</Module>
+</Wix>

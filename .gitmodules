@@ -1,0 +1,6 @@
+[submodule "chrome-batch-token-signing"]
+	path = chrome-batch-token-signing
+	url = https://github.com/nortal/chrome-batch-token-signing
+[submodule "browser-batch-token-signing"]
+	path = browser-batch-token-signing
+	url = https://github.com/nortal/browser-batch-token-signing
