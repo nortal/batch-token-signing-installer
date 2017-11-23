@@ -17,19 +17,6 @@
         </Directory>
       </Directory>
 
-      <!-- 64bit -->
-      <?if $(var.Platform) = "x64" ?>
-      <Directory Id='ProgramFiles64Folder'>
-        <Directory Id="APPLICATION64FOLDER" Name="Firefox Token Signing Plugin Mass">
-          <Component Id="Application64" Guid="C3773B13-1E17-4BD8-9FE4-DC6367B0D51C" Win64="yes">
-            <File Source="C:\OpenSSL-Win64\bin\libeay32.dll" Id="libeay32_x64.dll"/>
-            <File Source="$(var.ExtSolutionDir)x64\Release\npesteid-firefox-plugin.dll" Id="npesteid_firefox_plugin64.dll" KeyPath="yes" Name="npesteid-firefox-plugin64.dll"/>
-            <RegistryValue Root="HKLM" Key="Software\MozillaPlugins\@NORTAL/esteid-firefox-plugin-mass" Name="Path"
-                         Value="[APPLICATION64FOLDER]npesteid-firefox-plugin64.dll" Type="string" Action="write"/>
-          </Component>
-        </Directory>
-      </Directory>
-      <?endif ?>
     </Directory>
   </Module>
 </Wix>

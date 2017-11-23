@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?ifndef Platform ?>
+<?define Platform=x64 ?>
+<?endif ?>
+
+<?if $(var.Platform) = x64 ?>
+<?define Win64 = "yes" ?>
+<?else ?>
+<?define Win64 = "no" ?>
+<?endif ?>
+
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?include "ch_config.wxi"?>
 	<Module Id="Chrome_token_signing_install_module" Language="1033" Version="$(var.VERSION)">
@@ -7,21 +18,39 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id='ProgramFilesFolder'>
         <Directory Id="APPLICATIONFOLDER" Name="Chrome Token Signing Mass">
-          <Component Id="Application" Guid="DF8279AE-AFA9-4D1C-8C6E-B8E09B1DD2EB">
+          <Component Id="Application" Guid="DF8279AE-AFA9-4D1C-8C6E-B8E09B1DD2EB" Win64="no">
             <File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.CRT\msvcp120.dll"/>
             <File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.CRT\msvcr120.dll"/>
             <File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.CRT\vccorlib120.dll"/>
             <File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.MFC\mfc120u.dll"/>
             <File Source="$(var.ExtSolutionDir)host-windows/Release/chrome-token-signing-mass.exe"/>
             <File Source="$(var.ExtSolutionDir)host-windows/ee.nortal.sign_mass.json"/>
+            <File Source="$(var.ExtSolutionDir)host-windows/ee.nortal.sign_mass.firefox.json"/>
+            <File Source="$(var.ExtSolutionDir)host-windows/token_signing_mass-0.0.7-an+fx-windows.xpi"/>
             <RegistryValue Root="HKLM" Type="string" Value="[APPLICATIONFOLDER]ee.nortal.sign_mass.json"
                 Key="SOFTWARE\Google\Chrome\NativeMessagingHosts\ee.nortal.sign_mass"/>
             <RegistryValue Root="HKLM" Type="string" Name="update_url"
                 Key="SOFTWARE\Google\Chrome\Extensions\fhflklnpgjhdjcnlnlnoeomfebmbjkkk"
                 Value="https://clients2.google.com/service/update2/crx" />
+            <!-- Firefox extension -->
+            <RegistryValue Root='HKLM' Type='string' Value='[APPLICATIONFOLDER]ee.nortal.sign_mass.firefox.json'
+              Key='SOFTWARE\Mozilla\NativeMessagingHosts\ee.nortal.sign_mass' />
+            <RegistryValue Root="HKLM" Type="string" Value="[APPLICATIONFOLDER]token_signing_mass-0.0.7-an+fx-windows.xpi"
+                Key="SOFTWARE\Mozilla\Firefox\Extensions" Name="massallkirjastamine@nortal.com" />
           </Component>
         </Directory>
       </Directory>
+
+      <?if $(var.Platform) = "x64" ?>
+      <!-- Firefox extension -->
+      <Component Id="Firefox_X64" Guid="F0115BFB-DCC1-4D8D-8959-DEC83E1C9419" Win64="yes">
+        <RegistryValue Root='HKLM' Type='string' Value='[APPLICATIONFOLDER]ee.nortal.sign_mass.firefox.json'
+          Key='SOFTWARE\Mozilla\NativeMessagingHosts\ee.nortal.sign_mass' />
+        <RegistryValue Root="HKLM" Type="string" Value="[APPLICATIONFOLDER]token_signing_mass-0.0.7-an+fx-windows.xpi"
+                Key="SOFTWARE\Mozilla\Firefox\Extensions" Name="massallkirjastamine@nortal.com" />
+      </Component>
+      <?endif ?>
+      
     </Directory>
 	</Module>
 </Wix>

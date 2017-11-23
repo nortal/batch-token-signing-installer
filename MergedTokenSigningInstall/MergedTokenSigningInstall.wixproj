@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>3.10</ProductVersion>
+    <ProductVersion>1.1.0.1</ProductVersion>
     <ProjectGuid>dc035b2e-c658-41db-be25-e3dde57cfeb9</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>MergedTokenSigningInstall</OutputName>
+    <OutputName>MergedTokenSigningInstall_$(ProductVersion)($(Platform))</OutputName>
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
@@ -19,7 +19,21 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <WixVariables>WixUILicenseRtf=$(SolutionDir)media/LICENSE.LGPL.rtf;WixUIDialogBmp=$(SolutionDir)media/dlgbmp.bmp</WixVariables>
+    <WixVariables>Platform=x86;WixUILicenseRtf=$(SolutionDir)media/LICENSE.LGPL.rtf;WixUIDialogBmp=$(SolutionDir)media/dlgbmp.bmp</WixVariables>
+    <SuppressAllWarnings>False</SuppressAllWarnings>
+    <Pedantic>True</Pedantic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+    <SuppressAllWarnings>False</SuppressAllWarnings>
+    <Pedantic>False</Pedantic>
+    <WixVariables>Platform=x64;WixUILicenseRtf=$(SolutionDir)media/LICENSE.LGPL.rtf;WixUIDialogBmp=$(SolutionDir)media/dlgbmp.bmp</WixVariables>
+    <Cultures />
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="MergedTokenSigningInstall.wxs" />

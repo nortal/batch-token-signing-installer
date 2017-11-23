@@ -2,15 +2,25 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?include "merge_config.wxi"?>
   <!--old GUID 90954DBC-2AF8-45EB-AA9A-53ED5397642F -->
-	<Product Id="31C5FF6B-F8F9-4033-9A9C-D44700682D7D" Name="Massallkirjastamine" Language="1033" Version="1.1.0.0" Manufacturer="NORTAL" UpgradeCode="f25c28b2-3c70-468f-9c78-7c81f9812326">
-		<Package InstallerVersion="405" Keywords='Installer' Compressed="yes" InstallScope="perMachine" />
+	<Product Id="*" Name="Massallkirjastamine ($(var.Platform))" Language="1033" Version="$(var.VERSION)" Manufacturer="NORTAL" UpgradeCode="$(var.upgradeCode)">
+		<Package InstallerVersion="405" Keywords='Installer' Compressed="yes" InstallScope="perMachine" Platform="$(var.Platform)" />
     <UIRef Id="WixUI_Minimal" />
     <MediaTemplate EmbedCab="yes" CompressionLevel="high"/>
     <Icon Id="Icon.ico" SourceFile="$(var.SolutionDir)media/ID.ico"/>
     <Property Id="ARPPRODUCTICON" Value="Icon.ico"/>
     <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />
+    <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
     
-		<MajorUpgrade  AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Upgrade Id="$(var.upgradeCode)">
+      <UpgradeVersion
+         Minimum="1.0.0.0" Maximum="99.0.0.0"
+         Property="PREVIOUSVERSIONSINSTALLED"
+         IncludeMinimum="yes" IncludeMaximum="no" />
+    </Upgrade>
+
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallInitialize" />
+    </InstallExecuteSequence>
 
     <Directory Id='TARGETDIR' Name='SourceDir'>
       <Directory Id='ProgramFilesFolder' Name='PFiles'>
