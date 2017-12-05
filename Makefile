@@ -21,7 +21,6 @@
 SIGN = signtool sign /debug /v /a /n "NORTAL AS" /fd SHA256 /du http://nortal.com /t http://timestamp.verisign.com/scripts/timstamp.dll
 
 build-modules:
-	msbuild /t:"Firefox token signing install module":Rebuild /p:Configuration=Release;Platform=x86 "Mass token signing install.sln"
 	msbuild /t:"IE token signing install module":Rebuild /p:Configuration=Release;Platform=x86 "Mass token signing install.sln"
 	msbuild /t:"Chrome token signing install module":Rebuild /p:Configuration=Release;Platform=x86 "Mass token signing install.sln"
 

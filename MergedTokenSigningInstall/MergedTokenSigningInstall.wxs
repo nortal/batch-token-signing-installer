@@ -26,7 +26,6 @@
       <Directory Id='ProgramFilesFolder' Name='PFiles'>
         <Directory Id='NORTAL' Name='Nortal'>
           <Directory Id='INSTALLDIR' Name='Mass Token Signing'>
-            <Merge Id="ff_plugin" Language="1033" SourceFile="$(var.ff_module)" DiskId="1" />
             <Merge Id="ie_plugin" Language="1033" SourceFile="$(var.ie_module)" DiskId="1" />
             <Merge Id="ch_plugin" Language="1033" SourceFile="$(var.ch_module)" DiskId="1" />
           </Directory>
@@ -35,7 +34,6 @@
     </Directory>
 
     <Feature Id="Msm" Title="Msm" Level="1">
-      <MergeRef Id="ff_plugin" />
       <MergeRef Id="ie_plugin" />
       <MergeRef Id="ch_plugin" />
     </Feature>

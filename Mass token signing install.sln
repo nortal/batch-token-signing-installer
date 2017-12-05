@@ -5,14 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Chrome token signing install module", "Chrome token signing install module\Chrome token signing install module.wixproj", "{C02F91D2-780E-49E6-9736-DC62C77C8712}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Firefox token signing install module", "Firefox token signing install module\Firefox token signing install module.wixproj", "{7D6200CE-BDE8-468D-8B05-81FAF6CC15A9}"
-EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "IE token signing install module", "IE token signing install module\IE token signing install module.wixproj", "{0E1FF6C2-04AC-44D7-A98F-3D2CE69D1D81}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MergedTokenSigningInstall", "MergedTokenSigningInstall\MergedTokenSigningInstall.wixproj", "{DC035B2E-C658-41DB-BE25-E3DDE57CFEB9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0E1FF6C2-04AC-44D7-A98F-3D2CE69D1D81} = {0E1FF6C2-04AC-44D7-A98F-3D2CE69D1D81}
-		{7D6200CE-BDE8-468D-8B05-81FAF6CC15A9} = {7D6200CE-BDE8-468D-8B05-81FAF6CC15A9}
 		{C02F91D2-780E-49E6-9736-DC62C77C8712} = {C02F91D2-780E-49E6-9736-DC62C77C8712}
 	EndProjectSection
 EndProject
@@ -31,13 +28,6 @@ Global
 		{C02F91D2-780E-49E6-9736-DC62C77C8712}.Release|x64.Build.0 = Release|x64
 		{C02F91D2-780E-49E6-9736-DC62C77C8712}.Release|x86.ActiveCfg = Release|x86
 		{C02F91D2-780E-49E6-9736-DC62C77C8712}.Release|x86.Build.0 = Release|x86
-		{7D6200CE-BDE8-468D-8B05-81FAF6CC15A9}.Debug|x64.ActiveCfg = Debug|x86
-		{7D6200CE-BDE8-468D-8B05-81FAF6CC15A9}.Debug|x86.ActiveCfg = Debug|x86
-		{7D6200CE-BDE8-468D-8B05-81FAF6CC15A9}.Debug|x86.Build.0 = Debug|x86
-		{7D6200CE-BDE8-468D-8B05-81FAF6CC15A9}.Release|x64.ActiveCfg = Release|x64
-		{7D6200CE-BDE8-468D-8B05-81FAF6CC15A9}.Release|x64.Build.0 = Release|x64
-		{7D6200CE-BDE8-468D-8B05-81FAF6CC15A9}.Release|x86.ActiveCfg = Release|x86
-		{7D6200CE-BDE8-468D-8B05-81FAF6CC15A9}.Release|x86.Build.0 = Release|x86
 		{0E1FF6C2-04AC-44D7-A98F-3D2CE69D1D81}.Debug|x64.ActiveCfg = Debug|x86
 		{0E1FF6C2-04AC-44D7-A98F-3D2CE69D1D81}.Debug|x86.ActiveCfg = Debug|x86
 		{0E1FF6C2-04AC-44D7-A98F-3D2CE69D1D81}.Debug|x86.Build.0 = Debug|x86
