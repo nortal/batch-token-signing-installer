@@ -19,14 +19,15 @@
 # This is the Makefile for Windows NMake. See GNUmakefile for OSX/Linux.
 
 SIGN = signtool sign /debug /v /a /n "NORTAL AS" /fd SHA256 /du http://nortal.com /t http://timestamp.verisign.com/scripts/timstamp.dll
+PLATFORM = x64
 
 build-modules:
-	msbuild /t:"IE token signing install module":Rebuild /p:Configuration=Release;Platform=x86 "Mass token signing install.sln"
-	msbuild /t:"Chrome token signing install module":Rebuild /p:Configuration=Release;Platform=x86 "Mass token signing install.sln"
+	msbuild /t:"IE token signing install module":Rebuild /p:Configuration=Release;Platform=$(PLATFORM) "Mass token signing install.sln"
+	msbuild /t:"Chrome token signing install module":Rebuild /p:Configuration=Release;Platform=$(PLATFORM) "Mass token signing install.sln"
 
 pkg:
-	msbuild /t:"MergedTokenSigningInstall":Rebuild /p:Configuration=Release;Platform=x86 "Mass token signing install.sln"
+	msbuild /t:"MergedTokenSigningInstall":Rebuild /p:Configuration=Release;Platform=$(PLATFORM) "Mass token signing install.sln"
 	$(SIGN) MergedTokenSigningInstall\bin\Release\MergedTokenSigningInstall.msi
 
 pkg-unsigned:
-	msbuild /t:"MergedTokenSigningInstall":Rebuild /p:Configuration=Release;Platform=x86 "Mass token signing install.sln"
+	msbuild /t:"MergedTokenSigningInstall":Rebuild /p:Configuration=Release;Platform=$(PLATFORM) "Mass token signing install.sln" /property:Platform=x64

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>3.10</ProductVersion>
+    <ProductVersion>3.12</ProductVersion>
     <ProjectGuid>0e1ff6c2-04ac-44d7-a98f-3d2ce69d1d81</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>IE_token_signing_install_module</OutputName>

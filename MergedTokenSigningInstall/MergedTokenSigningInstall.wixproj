@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>1.2.0.0</ProductVersion>
+    <ProductVersion>1.3.0.0</ProductVersion>
     <ProjectGuid>dc035b2e-c658-41db-be25-e3dde57cfeb9</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>MergedTokenSigningInstall_$(ProductVersion)($(Platform))</OutputName>
