@@ -30,4 +30,4 @@ pkg:
 	$(SIGN) MergedTokenSigningInstall\bin\Release\MergedTokenSigningInstall.msi
 
 pkg-unsigned:
-	msbuild /t:"MergedTokenSigningInstall":Rebuild /p:Configuration=Release;Platform=$(PLATFORM) "Mass token signing install.sln" /property:Platform=x64
+	msbuild /t:"MergedTokenSigningInstall":Rebuild /p:Configuration=Release;Platform=$(PLATFORM) "Mass token signing install.sln" /property:Platform=$(PLATFORM)
